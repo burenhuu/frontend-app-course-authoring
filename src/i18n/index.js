@@ -8,6 +8,7 @@ import ptMessages from './messages/pt.json';
 import itMessages from './messages/it.json';
 import ukMessages from './messages/uk.json';
 import deMessages from './messages/de.json';
+import mnMessages from './messages/mn.json';
 import ruMessages from './messages/ru.json';
 import hiMessages from './messages/hi.json';
 import frCAMessages from './messages/fr_CA.json';
@@ -31,6 +32,7 @@ const appMessages = {
   'de-de': dedeMessages,
   'it-it': ititMessages,
   'pt-pt': ptptMessages,
+  mn: mnMessages,
 };
 
 export default [
