@@ -18,6 +18,8 @@ import initializeStore from './store';
 import './index.scss';
 import CourseAuthoringRoutes from './CourseAuthoringRoutes';
 import Head from './head/Head';
+import { IntlProvider } from '@edx/frontend-platform/i18n';
+import messages from './i18n';
 
 const App = () => {
   useEffect(() => {
@@ -36,24 +38,26 @@ const App = () => {
 
   return (
     <AppProvider store={initializeStore()}>
-      <Head />
-      <Switch>
-        <Route path="/home">
-          {process.env.ENABLE_NEW_HOME_PAGE === 'true'
-              && (
-              <Placeholder />
-              )}
-        </Route>
-        <Route
-          path="/course/:courseId"
-          render={({ match }) => {
-            const { params: { courseId } } = match;
-            return (
-              <CourseAuthoringRoutes courseId={courseId} />
-            );
-          }}
-        />
-      </Switch>
+      <IntlProvider defaultLocale='mn' locale='mn' messages={messages.mn}>
+        <Head />
+        <Switch>
+          <Route path="/home">
+            {process.env.ENABLE_NEW_HOME_PAGE === 'true'
+                && (
+                <Placeholder />
+                )}
+          </Route>
+          <Route
+            path="/course/:courseId"
+            render={({ match }) => {
+              const { params: { courseId } } = match;
+              return (
+                <CourseAuthoringRoutes courseId={courseId} />
+              );
+            }}
+          />
+        </Switch>
+      </IntlProvider>
     </AppProvider>
   );
 };
